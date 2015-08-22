@@ -18,11 +18,8 @@ public class Controller : MonoBehaviour {
 	private void Update () {
 
 		float horizontal = Input.GetAxis("Horizontal") * movementSpeed * Time.deltaTime;
-
 		cachedTransform.position = new Vector2 (cachedTransform.position.x + horizontal, cachedTransform.position.y);
-
 		isGround = Physics2D.Raycast (cachedTransform.position, Vector2.down, 3.315f, 1 << LayerMask.NameToLayer ("Ground"));
-
 		if (Input.GetButtonDown ("Vertical") && isGround && timerJump >= timeJump) {
 			cachedRigidbody.AddForce (Vector2.up  * 500.0f);
 			timerJump = 0.0f;
