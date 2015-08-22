@@ -29,15 +29,15 @@ public class WayPointSystem : MonoBehaviour {
 
 		float horizontal = speed * Time.deltaTime;
 		
-		cachedTransform.position = new Vector2 (cachedTransform.position.x + horizontal, 0);
+		cachedTransform.position = new Vector2 (cachedTransform.position.x + horizontal, cachedTransform.position.y);
 
 		if (cachedTransform.position.x <= x1 && speed < 0) {
 			speed = -1f * speed;
-			transform.localScale = new Vector3(1f, 1f, 1f);
+			cachedTransform.transform.localScale += new Vector3(-2f, 0, 0);
 		}
 		if (cachedTransform.position.x >= x2 && speed > 0) {
 			speed = -1f * speed;
-			transform.localScale = new Vector3(-1f, 1f, 1f);
+			cachedTransform.transform.localScale += new Vector3(2f, 0, 0);
 		}
 	}
 }
