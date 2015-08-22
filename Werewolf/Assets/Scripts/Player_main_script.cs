@@ -21,4 +21,8 @@ public class Player_main_script : MonoBehaviour {
 			Debug.Log(health);
 		}
 	}
+
+	private bool InShadow(){
+		Physics.Raycast (cachedTransform.position, new Vector3(0, 0, 3f), 3.315f, 1 << LayerMask.NameToLayer ("Ground"));
+	}
 }
