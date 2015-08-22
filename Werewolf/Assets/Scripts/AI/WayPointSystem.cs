@@ -39,7 +39,5 @@ public class WayPointSystem : MonoBehaviour {
 			speed = -1f * speed;
 			transform.localScale = new Vector3(-1f, 1f, 1f);
 		}
-
 	}
-
 }
