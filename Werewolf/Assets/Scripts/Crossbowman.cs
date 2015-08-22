@@ -2,24 +2,16 @@
 using System.Collections;
 
 public class Crossbowman : MonoBehaviour {
-
+	public Transform target;
 	public Rigidbody2D arrow;
 
-	void Start () {
-	}
-	
-	public Rigidbody2D Shooting () {
+	public void Atack () {
 		Vector3 position = transform.position;
-		Rigidbody2D arrow_clone = Instantiate(arrow, position, Quaternion.identity) as Rigidbody2D;
-		arrow_clone.velocity = Vector2.left * 30;
-		return arrow_clone;
-	}
+		Vector3 diff = target.position - transform.position;
+		diff.Normalize();
+		float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 
-	void Update () {
-		//if (Input.GetKeyDown ("w")) {
-		/*if (isDetectPlayer) {
-			Rigidbody2D arrow_clone = Shooting ();
-			arrow_clone.velocity = Vector2.left * 50;
-		}*/
+		Rigidbody2D arrow_clone = Instantiate(arrow, position, Quaternion.Euler(0f, 0f, rot_z)) as Rigidbody2D;
+		arrow_clone.velocity = (target.position - transform.position).normalized * 30;
 	}
 }
