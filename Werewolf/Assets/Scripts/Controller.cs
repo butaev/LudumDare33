@@ -3,12 +3,15 @@ using System.Collections;
 
 public class Controller : MonoBehaviour {
 
-	public float movementSpeed = 10.0f;
-	public float timeJump = 0.5f;
-	public float timerJump;
+	public float humanMovementSpeed = 10.0f;
+	public float werewolfMovementSpeed = 20.0f;
+	private float timeJump = 0.5f;
+	private float timerJump;
 	private Transform cachedTransform;
 	private Rigidbody2D cachedRigidbody;
 	private bool isGround = false;
+	private bool inShadow;
+	public bool human = true;
 	
 	private void Awake() {
 		cachedTransform = GetComponent<Transform>();
@@ -16,13 +19,20 @@ public class Controller : MonoBehaviour {
 	}
 	
 	private void Update () {
+		human = GetComponent<Player_main_script> ().inShadow;
+		if (human) {
+			float horizontal = Input.GetAxis("Horizontal");
+			cachedRigidbody.velocity = new Vector2( horizontal * humanMovementSpeed, cachedRigidbody.velocity.y);
+		} else {
+			float horizontal = Input.GetAxis("Horizontal");
+			cachedRigidbody.velocity = new Vector2( horizontal * werewolfMovementSpeed, cachedRigidbody.velocity.y);
+			isGround = Physics2D.Raycast (cachedTransform.position, Vector2.down, 6f, 1 << LayerMask.NameToLayer ("Ground"));
 
-		float horizontal = Input.GetAxis("Horizontal") * movementSpeed * Time.deltaTime;
-		cachedTransform.position = new Vector2 (cachedTransform.position.x + horizontal, cachedTransform.position.y);
-		isGround = Physics2D.Raycast (cachedTransform.position, Vector2.down, 3.315f, 1 << LayerMask.NameToLayer ("Ground"));
-		if (Input.GetButtonDown ("Vertical") && isGround && timerJump >= timeJump) {
-			cachedRigidbody.AddForce (Vector2.up  * 500.0f);
-			timerJump = 0.0f;
+			if (Input.GetButtonDown ("Vertical") && isGround && timerJump >= timeJump) {
+				cachedRigidbody.AddForce (Vector2.up  * 100000.0f);
+				timerJump = 0.0f;
+			}
+			timerJump += Time.deltaTime;
 		}
 		timerJump += Time.deltaTime;
 	}
