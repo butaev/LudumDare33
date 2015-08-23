@@ -17,7 +17,7 @@ public class Controller : MonoBehaviour {
 		cachedTransform = GetComponent<Transform>();
 		cachedRigidbody = GetComponent<Rigidbody2D>();
 	}
-	
+
 	private void Update () {
 		human = GetComponent<Player_main_script> ().inShadow;
 		if (human) {
@@ -26,8 +26,7 @@ public class Controller : MonoBehaviour {
 		} else {
 			float horizontal = Input.GetAxis("Horizontal");
 			cachedRigidbody.velocity = new Vector2( horizontal * werewolfMovementSpeed, cachedRigidbody.velocity.y);
-			isGround = Physics2D.Raycast (cachedTransform.position, Vector2.down, 6f, 1 << LayerMask.NameToLayer ("Ground"));
-
+			isGround = (Physics2D.Raycast (cachedTransform.position, Vector2.down, 6f, 1 << LayerMask.NameToLayer ("Ground")) || Physics2D.Raycast (cachedTransform.position, Vector2.down, 6f, 1 << LayerMask.NameToLayer ("Box")));
 			if (Input.GetButtonDown ("Vertical") && isGround && timerJump >= timeJump) {
 				cachedRigidbody.AddForce (Vector2.up  * 100000.0f);
 				timerJump = 0.0f;

@@ -13,12 +13,15 @@ public class Player_main_script : MonoBehaviour {
 		//cachedTransform = GetComponent<Transform>();
 		//cachedRigidbody = GetComponent<Rigidbody2D>();
 	//}
+	public void Harm(){
+		health -= 1;
+		Debug.Log(health);
+	}
 	
 	void OnTriggerEnter2D(Collider2D trigger) {
 		if (trigger.tag == "Projecttile") {
 			Destroy(trigger.gameObject);
-			health -= 1;
-			Debug.Log(health);
+			Harm();
 		}
 	}
 

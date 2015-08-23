@@ -7,7 +7,7 @@ public class WayPointSystem : MonoBehaviour {
 	public GameObject point2;
 
 	private bool right = true;
-	private Vector2 v1, v2;
+	//private Vector2 v1, v2;
 	private float v_left, v_right, dir;
 	private Transform cachedTransform;
 	private Rigidbody2D cachedRigidbody;
@@ -18,15 +18,15 @@ public class WayPointSystem : MonoBehaviour {
 
 	private void Start () {
 		cachedTransform = transform.parent.transform;
-		v1 = point1.transform.position;
-		v2 = point2.transform.position;
+		//v1 = point1.transform.position;
+		//v2 = point2.transform.position;
 		v_left = point1.transform.position.x;
 		v_right = point2.transform.position.x;
 		if (v_left > v_right) {
 			v_left = v_right;
-			v1 = v2;
+			//v1 = v2;
 			v_right = point1.transform.position.x;
-			v2 = point1.transform.position;
+			//v2 = point1.transform.position;//
 		}
 		Destroy (point1);
 		Destroy (point2);
@@ -36,7 +36,7 @@ public class WayPointSystem : MonoBehaviour {
 
 	public float GetTarget (Vector2 curPos) {
 
-		if (cachedTransform.position.x <= v_left&& !right) {
+		if (cachedTransform.position.x <= v_left && !right) {
 			cachedTransform.localScale = new Vector3 (1f, cachedTransform.localScale.y, cachedTransform.localScale.z);
 			right = true;
 			dir = v_right;
