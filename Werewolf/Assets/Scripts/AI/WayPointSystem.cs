@@ -3,13 +3,11 @@ using System.Collections;
 
 public class WayPointSystem : MonoBehaviour {
 
-	public float speed = 10.0f;
-
 	public GameObject point1;
 	public GameObject point2;
-	
-	private float x1, x2;
 
+	private bool right = false;
+	private Vector2 v1, v2, dir;
 	private Transform cachedTransform;
 	private Rigidbody2D cachedRigidbody;
 	private void OnDrawGizmos() {
@@ -19,25 +17,26 @@ public class WayPointSystem : MonoBehaviour {
 
 	private void Start () {
 		cachedTransform = transform.parent.transform;
-		x1 = point1.transform.position.x;
-		x2 = point2.transform.position.x;
+		v1 = new Vector2 (point1.transform.position.x, point1.transform.position.y);
+		v2 = new Vector2 (point2.transform.position.x, point1.transform.position.y);
 		Destroy (point1);
 		Destroy (point2);
+		cachedTransform.localScale = new Vector3 (-1f, cachedTransform.localScale.y, cachedTransform.localScale.z);
 	}
 
-	private void Update () {
 
-		float horizontal = speed * Time.deltaTime;
-		
-		cachedTransform.position = new Vector2 (cachedTransform.position.x + horizontal, cachedTransform.position.y);
+	public Vector2 GetTarget (Vector2 curPos) {
 
-		if (cachedTransform.position.x <= x1 && speed < 0) {
-			speed = -1f * speed;
-			cachedTransform.transform.localScale += new Vector3(-2f, 0, 0);
+		if (Vector2.Distance(curPos, v1) <= 10.5f && right) {
+			cachedTransform.localScale = new Vector3 (-1f, cachedTransform.localScale.y, cachedTransform.localScale.z);
+			right = false;
+			dir = v2;
 		}
-		if (cachedTransform.position.x >= x2 && speed > 0) {
-			speed = -1f * speed;
-			cachedTransform.transform.localScale += new Vector3(2f, 0, 0);
+		if (Vector2.Distance(curPos, v2) <= 10.5f && !right) {
+			cachedTransform.localScale = new Vector3 (+1f, cachedTransform.localScale.y, cachedTransform.localScale.z);
+			right = true;
+			dir = v1;
 		}
+		return dir;
 	}
 }
