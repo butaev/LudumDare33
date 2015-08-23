@@ -3,7 +3,8 @@ using System.Collections;
 
 public class Crossbowman : MonoBehaviour {
 	public Transform target;
-	public Rigidbody2D arrow;
+	public GameObject arrow;
+
 
 	public void Atack () {
 		Vector3 position = transform.position;
