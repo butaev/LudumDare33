@@ -31,9 +31,9 @@ public class Footman : MonoBehaviour {
 
 		if (poligonCollider.IsTouching (target.GetComponent<BoxCollider2D> ())) {
 			Debug.Log ("Test");
-			Atack ();
+			Atack ();//
 		} else {
-			cachedTransform.position = Vector3.MoveTowards (cachedTransform.position, GetComponentInChildren<WayPointSystem>().GetTarget(cachedTransform.position), step);
+			cachedTransform.position = Vector2.MoveTowards (cachedTransform.position, new Vector2(GetComponentInChildren<WayPointSystem>().GetTarget(cachedTransform.position), cachedTransform.position.y), step);
 		}
 	}
 }
