@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: bab6aa0d97a19224694b0901db1fdfa1
-timeCreated: 1440414447
+guid: 7f546ada97878054e8ced3520d4a9fac
+timeCreated: 1440417259
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: attack_w_0
-    21300002: attack_w_1
-    21300004: attack_w_2
-    21300006: attack_w_3
+    21300000: attackW_0
+    21300002: attackW_1
+    21300004: attackW_2
+    21300006: attackW_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -53,7 +53,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: attack_w_0
+    - name: attackW_0
       rect:
         serializedVersion: 2
         x: 0
@@ -63,7 +63,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: attack_w_1
+    - name: attackW_1
       rect:
         serializedVersion: 2
         x: 400
@@ -73,7 +73,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: attack_w_2
+    - name: attackW_2
       rect:
         serializedVersion: 2
         x: 0
@@ -83,7 +83,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: attack_w_3
+    - name: attackW_3
       rect:
         serializedVersion: 2
         x: 400

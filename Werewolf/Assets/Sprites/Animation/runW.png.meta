@@ -1,21 +1,18 @@
 fileFormatVersion: 2
-guid: b42a395e36de41e4b9f8ff3143979ef9
-timeCreated: 1440408123
+guid: 6f7fe3a4136f59c4fb69a614f02dcd0b
+timeCreated: 1440417470
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: runH_0
-    21300002: runH_1
-    21300004: runH_2
-    21300006: runH_3
-    21300008: runH_4
-    21300010: runH_5
-    21300012: runH_6
-    21300014: runH_7
-    21300016: runH_8
-    21300018: runH_9
-    21300020: runH_10
-    21300022: runH_11
+    21300000: runW_0
+    21300002: runW_1
+    21300004: runW_2
+    21300006: runW_3
+    21300008: runW_4
+    21300010: runW_5
+    21300012: runW_6
+    21300014: runW_7
+    21300016: runW_8
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -55,129 +52,99 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 25
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: runH_0
+    - name: runW_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 900
-        width: 300
-        height: 300
+        y: 800
+        width: 400
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runH_1
+    - name: runW_1
       rect:
         serializedVersion: 2
-        x: 300
-        y: 900
-        width: 300
-        height: 300
+        x: 400
+        y: 800
+        width: 400
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runH_2
+    - name: runW_2
       rect:
         serializedVersion: 2
-        x: 600
-        y: 900
-        width: 300
-        height: 300
+        x: 800
+        y: 800
+        width: 400
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runH_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 600
-        width: 300
-        height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runH_4
-      rect:
-        serializedVersion: 2
-        x: 300
-        y: 600
-        width: 300
-        height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runH_5
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 600
-        width: 300
-        height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runH_6
+    - name: runW_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 300
-        width: 300
-        height: 300
+        y: 400
+        width: 400
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runH_7
+    - name: runW_4
       rect:
         serializedVersion: 2
-        x: 300
-        y: 300
-        width: 300
-        height: 300
+        x: 400
+        y: 400
+        width: 400
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runH_8
+    - name: runW_5
       rect:
         serializedVersion: 2
-        x: 600
-        y: 300
-        width: 300
-        height: 300
+        x: 800
+        y: 400
+        width: 400
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runH_9
+    - name: runW_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 300
-        height: 300
+        width: 400
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runH_10
+    - name: runW_7
       rect:
         serializedVersion: 2
-        x: 300
+        x: 400
         y: 0
-        width: 300
-        height: 300
+        width: 400
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runH_11
+    - name: runW_8
       rect:
         serializedVersion: 2
-        x: 600
+        x: 800
         y: 0
-        width: 300
-        height: 300
+        width: 400
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
