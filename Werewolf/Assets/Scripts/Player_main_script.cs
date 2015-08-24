@@ -6,6 +6,7 @@ public class Player_main_script : MonoBehaviour {
 	private int health = 4;
 	public bool inShadow = false;
 	public GameObject moon;
+
 	
 	void OnTriggerEnter2D(Collider2D trigger) {
 		if (trigger.tag == "Projecttile") {

@@ -42,7 +42,7 @@ public class Controller : MonoBehaviour {
 	private void Atack(float direction) {
 		if (Physics2D.Raycast (cachedTransform.position, new Vector2 (direction, 0), atackRadius).transform.tag == "Enemy");
 	}
-
+	
 	private void Update () {
 		human = GetComponent<Player_main_script> ().inShadow;
 		float horizontal = Input.GetAxis("Horizontal");
@@ -65,6 +65,7 @@ public class Controller : MonoBehaviour {
 			cachedRigidbody.velocity = new Vector2( horizontal * werewolfMovementSpeed, cachedRigidbody.velocity.y);
 			isGround = (Physics2D.Raycast (cachedTransform.position, Vector2.down, 10f, 1 << LayerMask.NameToLayer ("Ground")) || Physics2D.Raycast (cachedTransform.position, Vector2.down, 6f, 1 << LayerMask.NameToLayer ("Box")));
 			if (Input.GetButtonDown ("Vertical") && isGround && timerJump >= timeJump && Input.GetAxis("Vertical") > 0f) {
+
 				cachedRigidbody.AddForce (Vector2.up  * 100000.0f);
 				timerJump = 0.0f;
 			}
