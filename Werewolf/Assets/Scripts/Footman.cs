@@ -14,6 +14,8 @@ public class Footman : MonoBehaviour {
 	private bool startHit = false;
 	private float targetX;
 	public int health = 2;
+	private Animator anim;
+	public Transform pivot;
 
 	public void Harm(){
 		health -= 1;
@@ -27,26 +29,29 @@ public class Footman : MonoBehaviour {
 	}
 
 	private void Atack () {
-		if (!startHit && (cachedTransform.position - target.transform.position).magnitude < atackRadius) {
+		if (!startHit && (pivot.transform.position - target.transform.position).magnitude < atackRadius) {
 			startHit = true;
+			anim.SetBool("Swing", true);
 			startAtack = 0;
 		}
 		targetX = target.transform.position.x;
 		if (startHit) {
 			startAtack += Time.deltaTime;
 			if (startAtack > standBeforAtack) {
+				anim.SetBool("Atack", true);
+				anim.SetBool("Swing", false);
 				startHit = false;
 				if (transform.localScale.x == -1){
-					if (targetX < cachedTransform.position.x){
-						if ((cachedTransform.position - target.transform.position).magnitude < atackRadius){
+					if (targetX < pivot.position.x){
+						if ((pivot.position - target.transform.position).magnitude < atackRadius){
 							target.GetComponent<Player_main_script>().Harm();
 							return;
 						}
 					}
 				}
 				else {
-					if (targetX > cachedTransform.position.x){
-						if ((cachedTransform.position - target.transform.position).magnitude < atackRadius){
+					if (targetX > pivot.position.x){
+						if ((pivot.position - target.transform.position).magnitude < atackRadius){
 							target.GetComponent<Player_main_script>().Harm();
 							return;
 						}
@@ -54,11 +59,11 @@ public class Footman : MonoBehaviour {
 				}
 			}
 		}
-		if (!startHit && cachedTransform.position.x <= targetX) {
+		if (!startHit && pivot.position.x <= targetX) {
 			cachedTransform.position = new Vector2 (cachedTransform.position.x + speed * Time.deltaTime, cachedTransform.position.y);
 			transform.localScale = new Vector3 (1f, cachedTransform.localScale.y, cachedTransform.localScale.z);
 		}
-		if (!startHit && cachedTransform.position.x >= targetX) {
+		if (!startHit && pivot.position.x >= targetX) {
 			cachedTransform.position = new Vector2 (cachedTransform.position.x - speed * Time.deltaTime, cachedTransform.position.y);
 			transform.localScale = new Vector3 (-1f, cachedTransform.localScale.y, cachedTransform.localScale.z);
 		}
@@ -71,6 +76,7 @@ public class Footman : MonoBehaviour {
 	private void Awake () {
 		cachedTransform = GetComponent<Transform>();
 		poligonCollider = GetComponent<PolygonCollider2D>();
+		anim = GetComponent<Animator> ();
 	}
 	
 	private void Update () {
@@ -88,6 +94,8 @@ public class Footman : MonoBehaviour {
 			Atack ();
 		} else {
 			cachedTransform.position = Vector2.MoveTowards (cachedTransform.position, new Vector2(GetComponentInChildren<WayPointSystem>().GetTarget(cachedTransform.position), cachedTransform.position.y), step);
+			anim.SetBool("Atack", false);
+			anim.SetBool("Swing", false);
 		}
 	}
 }
