@@ -18,6 +18,7 @@ public class Controller : MonoBehaviour {
 	private float xScale;
 	private bool hiding = false;
 	private float direction;
+	private Animator anim;
 
 	private void Awake() {
 		cachedTransform = GetComponent<Transform>();
@@ -25,6 +26,7 @@ public class Controller : MonoBehaviour {
 		cachedCollider = GetComponent<Collider2D>();
 		yScale = transform.localScale.y;
 		xScale = transform.localScale.x;
+		anim = GetComponent<Animator> ();
 	}
 
 	void OnTriggerStay2D(Collider2D trigger) {
@@ -40,7 +42,10 @@ public class Controller : MonoBehaviour {
 	}
 
 	private void Atack(float direction) {
-		if (Physics2D.Raycast (cachedTransform.position, new Vector2 (direction, 0), atackRadius).transform.tag == "Enemy");
+		anim.SetBool("Atack", true);
+		if (Physics2D.Raycast (cachedTransform.position, new Vector2 (direction, 0), atackRadius).transform.tag == "Enemy") {
+
+		}
 	}
 	
 	private void Update () {
@@ -63,11 +68,14 @@ public class Controller : MonoBehaviour {
 			}
 		} else {
 			cachedRigidbody.velocity = new Vector2( horizontal * werewolfMovementSpeed, cachedRigidbody.velocity.y);
-			isGround = (Physics2D.Raycast (cachedTransform.position, Vector2.down, 10f, 1 << LayerMask.NameToLayer ("Ground")) || Physics2D.Raycast (cachedTransform.position, Vector2.down, 6f, 1 << LayerMask.NameToLayer ("Box")));
+			isGround = (Physics2D.Raycast (cachedTransform.position, Vector2.down, 15f, 1 << LayerMask.NameToLayer ("Ground")) || Physics2D.Raycast (cachedTransform.position, Vector2.down, 6f, 1 << LayerMask.NameToLayer ("Box")));
 			if (Input.GetButtonDown ("Vertical") && isGround && timerJump >= timeJump && Input.GetAxis("Vertical") > 0f) {
 
 				cachedRigidbody.AddForce (Vector2.up  * 100000.0f);
 				timerJump = 0.0f;
+			}
+			if (Input.GetKeyDown (KeyCode.Space)){
+				Atack(direction);
 			}
 			timerJump += Time.deltaTime;
 		}

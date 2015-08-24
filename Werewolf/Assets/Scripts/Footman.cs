@@ -13,6 +13,18 @@ public class Footman : MonoBehaviour {
 	private float startAtack = 0;
 	private bool startHit = false;
 	private float targetX;
+	public int health = 2;
+
+	public void Harm(){
+		health -= 1;
+		if (health <= 0) {
+			Death();
+		}
+	}
+
+	public void Death () {
+		Destroy (gameObject);
+	}
 
 	private void Atack () {
 		if (!startHit && (cachedTransform.position - target.transform.position).magnitude < atackRadius) {
