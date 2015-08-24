@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Footman : MonoBehaviour {
 	
-	public GameObject target;
+	private GameObject target;
 	public float speed = 10f;
 	private bool isAtacking = false;
 	private float detectionTime;
@@ -79,6 +79,7 @@ public class Footman : MonoBehaviour {
 		cachedTransform = GetComponent<Transform>();
 		poligonCollider = GetComponent<PolygonCollider2D>();
 		anim = GetComponent<Animator> ();
+		target = GameObject.Find ("Player");
 	}
 	
 	private void Update () {
@@ -87,11 +88,11 @@ public class Footman : MonoBehaviour {
 		if (detectionTime > coolingTime) {
 			isAtacking = false;
 		}
-		if (startHitTime > 0.2) {
+		if (startHitTime > 0.4) {
 			GetComponent<SpriteRenderer>().color = Color.white;
 		}
 		float step = speed * Time.deltaTime;
-		if (poligonCollider.IsTouching (target.GetComponent<BoxCollider2D> ()) || isAtacking) {
+		if ((poligonCollider.IsTouching (target.GetComponent<BoxCollider2D> ()) && !target.GetComponent<Controller>().human) || isAtacking) {
 			if (poligonCollider.IsTouching (target.GetComponent<BoxCollider2D>())){
 				detectionTime = 0;
 				isAtacking = true;

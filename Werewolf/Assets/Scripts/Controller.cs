@@ -12,7 +12,6 @@ public class Controller : MonoBehaviour {
 	private Rigidbody2D cachedRigidbody;
 	private Collider2D cachedCollider;
 	private bool isGround = false;
-	private bool inShadow;
 	public bool human = true;
 	private float yScale;
 	private float xScale;
@@ -33,7 +32,6 @@ public class Controller : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D trigger) {
 		if (trigger.transform.GetComponent<Collider2D> ().tag == "Door") {
 			if (human && Input.GetButtonDown ("Vertical") && !hiding && Input.GetAxis("Vertical") > 0f) {
-				Debug.Log ("Test1");
 				cachedRigidbody.isKinematic = true;
 				cachedCollider.enabled = false;
 				gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -79,7 +77,7 @@ public class Controller : MonoBehaviour {
 		} else {
 			cachedRigidbody.velocity = new Vector2( horizontal * werewolfMovementSpeed, cachedRigidbody.velocity.y);
 			isGround = (Physics2D.Raycast (cachedTransform.position, Vector2.down, 10.5f, 1 << LayerMask.NameToLayer ("Ground")) || Physics2D.Raycast (cachedTransform.position, Vector2.down, 10.5f, 1 << LayerMask.NameToLayer ("Box")));
-			if (Physics2D.Raycast (cachedTransform.position, Vector2.down, 10.5f, 1 << LayerMask.NameToLayer ("Atack"))){
+			if (Physics2D.Raycast (cachedTransform.position, Vector2.down, 9f, 1 << LayerMask.NameToLayer ("Atack"))){
 				hit = Physics2D.Raycast (cachedTransform.position, Vector2.down, 10.5f, 1 << LayerMask.NameToLayer ("Atack"));
 				hit.transform.GetComponentInParent<Footman>().Harm();
 				hit.transform.GetComponentInParent<Footman>().Harm();
