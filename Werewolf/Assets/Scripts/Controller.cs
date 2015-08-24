@@ -19,6 +19,7 @@ public class Controller : MonoBehaviour {
 	private bool hiding = false;
 	private float direction;
 	private Animator anim;
+	private RaycastHit2D hit;
 
 	private void Awake() {
 		cachedTransform = GetComponent<Transform>();
@@ -46,8 +47,9 @@ public class Controller : MonoBehaviour {
 			return;
 		}
 		anim.SetBool("Atack", true);
-		if (Physics2D.Raycast (cachedTransform.position, new Vector2 (direction, 0), atackRadius, 1 << LayerMask.NameToLayer ("Enemy"))) {
-			Physics2D.Raycast (cachedTransform.position, new Vector2 (direction, 0), atackRadius, 1 << LayerMask.NameToLayer ("Enemy")).transform.GetComponent<Footman>().Harm();
+		if (Physics2D.Raycast (cachedTransform.position, new Vector2 (direction, 0), atackRadius, 1 << LayerMask.NameToLayer ("Atack"))) {
+			hit = Physics2D.Raycast (cachedTransform.position, new Vector2 (direction, 0), atackRadius, 1 << LayerMask.NameToLayer ("Atack"));
+			hit.transform.GetComponentInParent<Footman>().Harm();
 		}
 	}
 	
@@ -77,6 +79,11 @@ public class Controller : MonoBehaviour {
 		} else {
 			cachedRigidbody.velocity = new Vector2( horizontal * werewolfMovementSpeed, cachedRigidbody.velocity.y);
 			isGround = (Physics2D.Raycast (cachedTransform.position, Vector2.down, 10.5f, 1 << LayerMask.NameToLayer ("Ground")) || Physics2D.Raycast (cachedTransform.position, Vector2.down, 10.5f, 1 << LayerMask.NameToLayer ("Box")));
+			if (Physics2D.Raycast (cachedTransform.position, Vector2.down, 10.5f, 1 << LayerMask.NameToLayer ("Atack"))){
+				hit = Physics2D.Raycast (cachedTransform.position, Vector2.down, 10.5f, 1 << LayerMask.NameToLayer ("Atack"));
+				hit.transform.GetComponentInParent<Footman>().Harm();
+				hit.transform.GetComponentInParent<Footman>().Harm();
+			}
 			if (isGround) {
 				anim.SetBool("Jump", false);
 				anim.SetBool("noJump", true);

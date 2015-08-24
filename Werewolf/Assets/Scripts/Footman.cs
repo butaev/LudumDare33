@@ -15,10 +15,12 @@ public class Footman : MonoBehaviour {
 	private float targetX;
 	public int health = 2;
 	private Animator anim;
+	private float startHitTime;
 
 	public void Harm(){
 		health -= 1;
-		Debug.Log (health);
+		startHitTime = 0;
+		GetComponent<SpriteRenderer>().color = Color.red;
 		if (health <= 0) {
 			Death();
 		}
@@ -80,10 +82,13 @@ public class Footman : MonoBehaviour {
 	}
 	
 	private void Update () {
-
+		startHitTime += Time.deltaTime;
 		detectionTime += Time.deltaTime;
 		if (detectionTime > coolingTime) {
 			isAtacking = false;
+		}
+		if (startHitTime > 0.2) {
+			GetComponent<SpriteRenderer>().color = Color.white;
 		}
 		float step = speed * Time.deltaTime;
 		if (poligonCollider.IsTouching (target.GetComponent<BoxCollider2D> ()) || isAtacking) {
