@@ -42,9 +42,12 @@ public class Controller : MonoBehaviour {
 	}
 
 	private void Atack(float direction) {
+		if (anim.GetCurrentAnimatorStateInfo(0).IsName("werewolfAtack")) {
+			return;
+		}
 		anim.SetBool("Atack", true);
-		if (Physics2D.Raycast (cachedTransform.position, new Vector2 (direction, 0), atackRadius).transform.tag == "Enemy") {
-
+		if (Physics2D.Raycast (cachedTransform.position, new Vector2 (direction, 0), atackRadius, 1 << LayerMask.NameToLayer ("Enemy"))) {
+			Physics2D.Raycast (cachedTransform.position, new Vector2 (direction, 0), atackRadius, 1 << LayerMask.NameToLayer ("Enemy")).transform.GetComponent<Footman>().Harm();
 		}
 	}
 	

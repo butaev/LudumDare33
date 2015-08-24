@@ -18,6 +18,7 @@ public class Footman : MonoBehaviour {
 
 	public void Harm(){
 		health -= 1;
+		Debug.Log (health);
 		if (health <= 0) {
 			Death();
 		}
