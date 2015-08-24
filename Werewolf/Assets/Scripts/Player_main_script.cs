@@ -20,7 +20,7 @@ public class Player_main_script : MonoBehaviour {
 	}
 
 	public void Death () {
-		Destroy (gameObject);
+		Application.LoadLevel("test");
 	}
 	
 	void OnTriggerEnter2D(Collider2D trigger) {
