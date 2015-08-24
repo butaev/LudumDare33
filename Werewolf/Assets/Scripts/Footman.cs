@@ -13,16 +13,33 @@ public class Footman : MonoBehaviour {
 	private float startAtack = 0;
 	private bool startHit = false;
 	private float targetX;
+	public int health = 2;
+	private Animator anim;
+
+	public void Harm(){
+		health -= 1;
+		Debug.Log (health);
+		if (health <= 0) {
+			Death();
+		}
+	}
+
+	public void Death () {
+		Destroy (gameObject);
+	}
 
 	private void Atack () {
-		if (!startHit && (cachedTransform.position - target.transform.position).magnitude < atackRadius) {
+		if (!startHit && (cachedTransform.transform.position - target.transform.position).magnitude < atackRadius) {
 			startHit = true;
+			anim.SetBool("Swing", true);
 			startAtack = 0;
 		}
 		targetX = target.transform.position.x;
 		if (startHit) {
 			startAtack += Time.deltaTime;
 			if (startAtack > standBeforAtack) {
+				anim.SetBool("Atack", true);
+				anim.SetBool("Swing", false);
 				startHit = false;
 				if (transform.localScale.x == -1){
 					if (targetX < cachedTransform.position.x){
@@ -59,6 +76,7 @@ public class Footman : MonoBehaviour {
 	private void Awake () {
 		cachedTransform = GetComponent<Transform>();
 		poligonCollider = GetComponent<PolygonCollider2D>();
+		anim = GetComponent<Animator> ();
 	}
 	
 	private void Update () {
@@ -76,6 +94,8 @@ public class Footman : MonoBehaviour {
 			Atack ();
 		} else {
 			cachedTransform.position = Vector2.MoveTowards (cachedTransform.position, new Vector2(GetComponentInChildren<WayPointSystem>().GetTarget(cachedTransform.position), cachedTransform.position.y), step);
+			anim.SetBool("Atack", false);
+			anim.SetBool("Swing", false);
 		}
 	}
 }

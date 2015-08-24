@@ -6,10 +6,21 @@ public class Player_main_script : MonoBehaviour {
 	private int health = 4;
 	public bool inShadow = false;
 	public GameObject moon;
+	private Animator anim;
+
+	void Awake () {
+		anim = GetComponent<Animator> ();
+	}
 
 	public void Harm(){
 		health -= 1;
-		Debug.Log(health);
+		if (health <= 0) {
+			Death ();
+		}
+	}
+
+	public void Death () {
+		Destroy (gameObject);
 	}
 	
 	void OnTriggerEnter2D(Collider2D trigger) {
@@ -33,9 +44,11 @@ public class Player_main_script : MonoBehaviour {
 
 	private void Update(){
 		if (inShadow) {
-			//GetComponent<SpriteRenderer> ().color = Color.red;
+			anim.SetBool("Human", true);
+			anim.SetBool("Wolf", false);
 		} else {
-			//GetComponent<SpriteRenderer> ().color = Color.blue;
+			anim.SetBool("Wolf", true);
+			anim.SetBool("Human", false);
 		}
 	}
 }
