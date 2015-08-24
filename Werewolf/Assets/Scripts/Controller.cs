@@ -25,14 +25,13 @@ public class Controller : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D trigger) {
 		if (human) {
 
-			if (Input.GetButtonDown ("Vertical") && !hiding && trigger.transform.GetComponent<Collider2D> ().tag == "Door") {
+			if (Input.GetButtonDown ("Vertical") && !hiding && trigger.transform.GetComponent<Collider2D> ().tag == "Door" && Input.GetAxis("Vertical") > 0f) {
 				Debug.Log ("Test1");
 				cachedCollider.enabled = false;
 				cachedRigidbody.isKinematic = true;
 				hiding = true;
 				return;
 			}
-			Debug.Log("A");
 			if (Input.GetButtonDown ("Vertical") && hiding) {
 				Debug.Log ("Test2");
 				cachedRigidbody.isKinematic = false;
@@ -54,7 +53,7 @@ public class Controller : MonoBehaviour {
 
 			if (Input.GetButtonDown ("Horizontal") && hiding) {
 				horizontal = Input.GetAxis ("Horizontal");
-				Debug.Log ("Test2");
+				Debug.Log ("Test3");
 				cachedCollider.enabled = true;
 				cachedRigidbody.isKinematic = false;
 			}
@@ -62,7 +61,7 @@ public class Controller : MonoBehaviour {
 			float horizontal = Input.GetAxis("Horizontal");
 			cachedRigidbody.velocity = new Vector2( horizontal * werewolfMovementSpeed, cachedRigidbody.velocity.y);
 			isGround = (Physics2D.Raycast (cachedTransform.position, Vector2.down, 6f, 1 << LayerMask.NameToLayer ("Ground")) || Physics2D.Raycast (cachedTransform.position, Vector2.down, 6f, 1 << LayerMask.NameToLayer ("Box")));
-			if (Input.GetButtonDown ("Vertical") && isGround && timerJump >= timeJump) {
+			if (Input.GetButtonDown ("Vertical") && isGround && timerJump >= timeJump && Input.GetAxis("Vertical") > 0f) {
 				cachedRigidbody.AddForce (Vector2.up  * 100000.0f);
 				timerJump = 0.0f;
 			}
