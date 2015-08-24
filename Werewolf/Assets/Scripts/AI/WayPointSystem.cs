@@ -18,6 +18,7 @@ public class WayPointSystem : MonoBehaviour {
 		if (v_left > v_right) {
 			v_left = v_right;
 			v_right = point1.transform.position.x;
+			v_right = point1.transform.position.x;
 		}
 		dir = v_right;
 		Destroy (point1);
@@ -27,7 +28,7 @@ public class WayPointSystem : MonoBehaviour {
 
 	public float GetTarget (Vector2 curPos) {
 
-		if (cachedTransform.position.x <= v_left && !right) {
+		if (cachedTransform.position.x <= v_left&& !right) {
 			cachedTransform.localScale = new Vector3 (1f, cachedTransform.localScale.y, cachedTransform.localScale.z);
 			right = true;
 			dir = v_right;
