@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: 6f7fe3a4136f59c4fb69a614f02dcd0b
-timeCreated: 1440417470
+guid: 27adf2f1597bb7341a696390e2106634
+timeCreated: 1440421359
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: runW_0
-    21300002: runW_1
-    21300004: runW_2
-    21300006: runW_3
-    21300008: runW_4
-    21300010: runW_5
-    21300012: runW_6
-    21300014: runW_7
-    21300016: runW_8
+    21300000: animation_w_imp_0
+    21300002: animation_w_imp_1
+    21300004: animation_w_imp_2
+    21300006: animation_w_imp_3
+    21300008: animation_w_imp_4
+    21300010: animation_w_imp_5
+    21300012: animation_w_imp_6
+    21300014: animation_w_imp_7
+    21300016: animation_w_imp_8
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -58,7 +58,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: runW_0
+    - name: animation_w_imp_0
       rect:
         serializedVersion: 2
         x: 0
@@ -68,7 +68,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runW_1
+    - name: animation_w_imp_1
       rect:
         serializedVersion: 2
         x: 400
@@ -78,7 +78,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runW_2
+    - name: animation_w_imp_2
       rect:
         serializedVersion: 2
         x: 800
@@ -88,7 +88,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runW_3
+    - name: animation_w_imp_3
       rect:
         serializedVersion: 2
         x: 0
@@ -98,7 +98,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runW_4
+    - name: animation_w_imp_4
       rect:
         serializedVersion: 2
         x: 400
@@ -108,7 +108,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runW_5
+    - name: animation_w_imp_5
       rect:
         serializedVersion: 2
         x: 800
@@ -118,7 +118,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runW_6
+    - name: animation_w_imp_6
       rect:
         serializedVersion: 2
         x: 0
@@ -128,7 +128,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runW_7
+    - name: animation_w_imp_7
       rect:
         serializedVersion: 2
         x: 400
@@ -138,7 +138,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: runW_8
+    - name: animation_w_imp_8
       rect:
         serializedVersion: 2
         x: 800

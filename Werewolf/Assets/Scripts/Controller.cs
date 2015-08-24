@@ -52,8 +52,13 @@ public class Controller : MonoBehaviour {
 		human = GetComponent<Player_main_script> ().inShadow;
 		float horizontal = Input.GetAxis("Horizontal");
 		direction = Mathf.Sign (horizontal);
-		if (horizontal != 0){
-			transform.localScale = new Vector2(direction * xScale, yScale);
+		if (horizontal != 0) {
+			anim.SetBool("Run", true);
+			anim.SetBool("Idle", false);
+			transform.localScale = new Vector2 (direction * xScale, yScale);
+		} else {
+			anim.SetBool("Run", false);
+			anim.SetBool("Idle", true);
 		}
 		if (human) {
 			if (hiding){
@@ -68,7 +73,14 @@ public class Controller : MonoBehaviour {
 			}
 		} else {
 			cachedRigidbody.velocity = new Vector2( horizontal * werewolfMovementSpeed, cachedRigidbody.velocity.y);
-			isGround = (Physics2D.Raycast (cachedTransform.position, Vector2.down, 10f, 1 << LayerMask.NameToLayer ("Ground")) || Physics2D.Raycast (cachedTransform.position, Vector2.down, 10f, 1 << LayerMask.NameToLayer ("Box")));
+			isGround = (Physics2D.Raycast (cachedTransform.position, Vector2.down, 10.5f, 1 << LayerMask.NameToLayer ("Ground")) || Physics2D.Raycast (cachedTransform.position, Vector2.down, 10.5f, 1 << LayerMask.NameToLayer ("Box")));
+			if (isGround) {
+				anim.SetBool("Jump", false);
+				anim.SetBool("noJump", true);
+			}else {
+				anim.SetBool("Jump", true);
+				anim.SetBool("noJump", false);
+			}
 			if (Input.GetButtonDown ("Vertical") && isGround && timerJump >= timeJump && Input.GetAxis("Vertical") > 0f) {
 
 				cachedRigidbody.AddForce (Vector2.up  * 100000.0f);

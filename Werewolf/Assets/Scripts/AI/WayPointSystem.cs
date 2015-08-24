@@ -10,7 +10,6 @@ public class WayPointSystem : MonoBehaviour {
 
 	private float v_left, v_right, dir;
 	private Transform cachedTransform;
-	//public Transform pivot;
 	private Rigidbody2D cachedRigidbody;
 
 	private void Start () {

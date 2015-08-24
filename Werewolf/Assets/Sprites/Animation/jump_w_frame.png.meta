@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: a42563af626e0e74cbf6d6d40666d817
-timeCreated: 1440422177
+guid: 8b733c36db6ba0247a1f8d27d4ac92a9
+timeCreated: 1440421379
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: attack_h_0
-    21300002: attack_h_1
-    21300004: attack_h_2
-    21300006: attack_h_3
+    21300000: jump_w_frame_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -53,45 +50,15 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: attack_h_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 400
-        width: 400
-        height: 400
-      alignment: 9
-      pivot: {x: .200000003, y: .400000006}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: attack_h_1
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 400
-        width: 400
-        height: 400
-      alignment: 9
-      pivot: {x: .200000003, y: .400000006}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: attack_h_2
+    - name: jump_w_frame_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 400
         height: 400
-      alignment: 9
-      pivot: {x: .200000003, y: .400000006}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: attack_h_3
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 0
-        width: 400
-        height: 400
-      alignment: 9
-      pivot: {x: .200000003, y: .400000006}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
