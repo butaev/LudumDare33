@@ -6,7 +6,7 @@ public class Footman : MonoBehaviour {
 	public GameObject target;
 	public float speed = 10f;
 	
-	public void Atack () {
+	private void Atack () {
 		
 		if (cachedTransform.position.x <= target.transform.position.x) {
 			cachedTransform.position = new Vector2 (cachedTransform.position.x + speed * Time.deltaTime, cachedTransform.position.y);

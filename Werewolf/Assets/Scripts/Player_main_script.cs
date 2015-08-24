@@ -5,14 +5,7 @@ public class Player_main_script : MonoBehaviour {
 
 	private int health = 4;
 	public bool inShadow = false;
-	//private Transform cachedTransform;
-	//private Rigidbody2D cachedRigidbody;
 	public GameObject moon;
-
-	//private void Awake() {
-		//cachedTransform = GetComponent<Transform>();
-		//cachedRigidbody = GetComponent<Rigidbody2D>();
-	//}
 	
 	void OnTriggerEnter2D(Collider2D trigger) {
 		if (trigger.tag == "Projecttile") {
@@ -36,9 +29,9 @@ public class Player_main_script : MonoBehaviour {
 
 	private void Update(){
 		if (inShadow) {
-			GetComponent<SpriteRenderer> ().color = Color.red;
+			//GetComponent<SpriteRenderer> ().color = Color.red;
 		} else {
-			GetComponent<SpriteRenderer> ().color = Color.blue;
+			//GetComponent<SpriteRenderer> ().color = Color.blue;
 		}
 	}
 }
