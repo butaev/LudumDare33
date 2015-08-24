@@ -14,7 +14,14 @@ public class Player_main_script : MonoBehaviour {
 
 	public void Harm(){
 		health -= 1;
-		Debug.Log(health);
+		Debug.Log (health);
+		if (health <= 0) {
+			Death ();
+		}
+	}
+
+	public void Death () {
+		Destroy (gameObject);
 	}
 	
 	void OnTriggerEnter2D(Collider2D trigger) {
