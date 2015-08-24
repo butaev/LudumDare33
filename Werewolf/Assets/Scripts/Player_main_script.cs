@@ -7,12 +7,15 @@ public class Player_main_script : MonoBehaviour {
 	public bool inShadow = false;
 	public GameObject moon;
 
+	public void Harm(){
+		health -= 1;
+		Debug.Log(health);
+	}
 	
 	void OnTriggerEnter2D(Collider2D trigger) {
 		if (trigger.tag == "Projecttile") {
 			Destroy(trigger.gameObject);
-			health -= 1;
-			Debug.Log(health);
+			Harm();
 		}
 	}
 
