@@ -8,8 +8,4 @@ public class Projectile : MonoBehaviour {
 			Destroy(gameObject);
 		}
 	}
-
-	void Update () {
-		OnTriggerEnter2D (GetComponent<Collider2D>());
-	}
 }
