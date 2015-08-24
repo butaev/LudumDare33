@@ -42,7 +42,7 @@ public class Controller : MonoBehaviour {
 	}
 
 	private void Atack(float direction) {
-		if (anim.GetCurrentAnimatorStateInfo(0).IsName("werewolfAtack")) {
+		if (anim.GetCurrentAnimatorStateInfo(0).IsName("werewolfAtack") || anim.GetCurrentAnimatorStateInfo(0).IsName("werewolfJump")) {
 			return;
 		}
 		anim.SetBool("Atack", true);
