@@ -2,9 +2,25 @@
 using System.Collections;
 
 public class Crossbowman : MonoBehaviour {
-	public Transform target;
+	private Transform target;
 	public GameObject arrow;
+	public int health = 2;
 
+	void Awake () {
+		target = GameObject.Find ("Player").transform;
+	}
+
+	public void Harm(){
+		health -= 1;
+		GetComponent<SpriteRenderer>().color = Color.red;
+		if (health <= 0) {
+			Death();
+		}
+	}
+	
+	public void Death () {
+		Destroy (gameObject);
+	}
 
 	public void Atack () {
 		Vector2 position = transform.position;

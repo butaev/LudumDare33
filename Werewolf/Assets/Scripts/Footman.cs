@@ -92,6 +92,9 @@ public class Footman : MonoBehaviour {
 			GetComponent<SpriteRenderer>().color = Color.white;
 		}
 		float step = speed * Time.deltaTime;
+		if ((cachedTransform.position - target.transform.position).magnitude < 15f) { // Detect near
+			isAtacking = true;
+		}
 		if ((poligonCollider.IsTouching (target.GetComponent<BoxCollider2D> ()) && !target.GetComponent<Controller>().human) || isAtacking) {
 			if (poligonCollider.IsTouching (target.GetComponent<BoxCollider2D>())){
 				detectionTime = 0;

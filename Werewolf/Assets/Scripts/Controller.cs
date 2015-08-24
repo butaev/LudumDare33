@@ -47,7 +47,11 @@ public class Controller : MonoBehaviour {
 		anim.SetBool("Atack", true);
 		if (Physics2D.Raycast (cachedTransform.position, new Vector2 (direction, 0), atackRadius, 1 << LayerMask.NameToLayer ("Atack"))) {
 			hit = Physics2D.Raycast (cachedTransform.position, new Vector2 (direction, 0), atackRadius, 1 << LayerMask.NameToLayer ("Atack"));
-			hit.transform.GetComponentInParent<Footman>().Harm();
+			try {
+				hit.transform.GetComponentInParent<Footman>().Harm();
+			} catch  {
+				hit.transform.GetComponentInParent<Crossbowman>().Harm();
+			}
 		}
 	}
 	
@@ -79,8 +83,14 @@ public class Controller : MonoBehaviour {
 			isGround = (Physics2D.Raycast (cachedTransform.position, Vector2.down, 10.5f, 1 << LayerMask.NameToLayer ("Ground")) || Physics2D.Raycast (cachedTransform.position, Vector2.down, 10.5f, 1 << LayerMask.NameToLayer ("Box")));
 			if (Physics2D.Raycast (cachedTransform.position, Vector2.down, 9f, 1 << LayerMask.NameToLayer ("Atack"))){
 				hit = Physics2D.Raycast (cachedTransform.position, Vector2.down, 10.5f, 1 << LayerMask.NameToLayer ("Atack"));
-				hit.transform.GetComponentInParent<Footman>().Harm();
-				hit.transform.GetComponentInParent<Footman>().Harm();
+				try {
+					hit.transform.GetComponentInParent<Footman>().Harm();
+					hit.transform.GetComponentInParent<Footman>().Harm();
+				} catch  {
+					hit.transform.GetComponentInParent<Crossbowman>().Harm();
+					hit.transform.GetComponentInParent<Crossbowman>().Harm();
+				}
+
 			}
 			if (isGround) {
 				anim.SetBool("Jump", false);
