@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Controller : MonoBehaviour {
 
+	public GameObject endTrigger;
+
 	public float humanMovementSpeed = 10.0f;
 	public float werewolfMovementSpeed = 20.0f;
 	public float atackRadius;
@@ -56,6 +58,9 @@ public class Controller : MonoBehaviour {
 	}
 	
 	private void Update () {
+		if (cachedCollider.IsTouching(endTrigger.GetComponent<Collider2D>())) {
+			Application.LoadLevel("test");
+		}
 		human = GetComponent<Player_main_script> ().inShadow;
 		float horizontal = Input.GetAxis("Horizontal");
 		direction = Mathf.Sign (horizontal);
